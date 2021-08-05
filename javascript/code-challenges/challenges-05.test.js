@@ -303,12 +303,12 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   // Solution code here...
-  let newArray = arr.reduce((acc, value, index) => {
+  let newArray = arr.reduce((acc, value) => {
     if (value.stat.name === statName) {
-      acc = acc + value[index];
+      acc = value;
     }
     return acc;
-  }, [])
+  }, " ")
   return newArray;
 };
 
@@ -328,11 +328,11 @@ const extractChildren = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
-
+ 
 All the code below will verify that your functions are working to solve the challenges.
-
+ 
 DO NOT CHANGE any of the below code.
-
+ 
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
@@ -398,13 +398,13 @@ xdescribe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return any stats that match the input', () => {
     expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual(['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras']);
     expect(extractChildren(characters).length).toStrictEqual(10);
