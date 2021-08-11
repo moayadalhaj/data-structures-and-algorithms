@@ -162,6 +162,9 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.map(element => {
+    result.push(element.split(" ").slice(2).join(" "));
+  })
   return result;
 };
 
@@ -178,6 +181,9 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.steps.map(element => {
+    result.push(element.split(" ")[0]);
+  })
   return result;
 };
 
@@ -196,6 +202,13 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  let newArray = arr.filter(element => {
+    if (element % 2 !== 0) {
+      return element;
+    };
+  });
+  arr.splice(0, arr.length);
+  return arr.push(...newArray);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -215,6 +228,13 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if (numberOfCharacters > str.length) {
+    return "";
+  } else if (numberOfCharacters < 0) {
+    return str;
+  } else {
+    return str.slice(0, -1 * numberOfCharacters);
+  }
 };
 
 
@@ -227,6 +247,7 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  str.split(",").forEach(element => total += Number(element));
   return total;
 };
 
@@ -241,6 +262,13 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
+  let vowles = ['a', 'i', 'e', 'o', 'u'];
+  let newStr = str.split("").filter(element => {
+    if (!vowles.includes(element)) {
+      return element;
+    }
+  });
+  return newStr.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -255,6 +283,27 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+  let vowles = ['a', 'i', 'e', 'o', 'u'];
+  let newStr = str.split("").filter(element => {
+    if (!vowles.includes(element)) {
+      return element;
+    }
+  });
+  let newStr2 = str.split("").filter(element => {
+    if (vowles.includes(element)) {
+      return element;
+    }
+  });
+  let newArray = newStr2.sort((a, b) => {
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1;
+    } else {
+      return 0;
+    };
+  });
+  return [newStr.join(''), newArray.join('')];
 };
 
 /* ------------------------------------------------------------------------------------------------
