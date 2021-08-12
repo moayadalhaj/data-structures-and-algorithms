@@ -168,6 +168,8 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+  let newInput = /\b[A-z][a-z]oct(\w)/g;
+  return newInput.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
