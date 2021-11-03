@@ -10,8 +10,8 @@ def test_empty_k_ary_tree():
 def test_filled_fizz_buzz_tree(k_arr):
     tree = fizz_buzz_tree(k_arr)
     # for the new tree
-    assert tree[0] == 'Fizz'
-    assert tree[-1] == 'FizzBuzz'
+    assert tree.root.value == 'Fizz'
+    assert tree.root.children[1].children[1].value == 'FizzBuzz'
 
 
 @pytest.fixture
