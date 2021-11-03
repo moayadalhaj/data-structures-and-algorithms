@@ -36,7 +36,6 @@ Determine whether or not the value of each node is divisible by 3, 5 or both. Cr
 def fizz_buzz_tree(k_array):
     if not k_array.root:
         return None
-    list = []
     all_nodes = []
     all_nodes.append(k_array.root)
     val = all_nodes[0]
@@ -45,20 +44,15 @@ def fizz_buzz_tree(k_array):
             all_nodes += val.children
         if val.value % 3 == 0 and val.value % 5 == 0:
             val.value = 'FizzBuzz'
-            list.append(val.value)
         elif val.value % 3 == 0:
             val.value = 'Fizz'
-            list.append(val.value)
         elif val.value % 5 == 0:
             val.value = 'Buzz'
-            list.append(val.value)
         else:
             val.value = str(val.value)
-            list.append(val.value)
         all_nodes.pop(0)
         if not all_nodes:
             break
         val = all_nodes[0]
-    return list
-
+    return k_array
 ```
