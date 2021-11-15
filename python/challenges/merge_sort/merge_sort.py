@@ -1,6 +1,6 @@
 def Mergesort(list):
     """
-    A function so split the list to sub-lists until each sub-list consists of a single element
+    A function to split the list to sub-lists until each sub-list consists of a single element
     """
     n = len(list)
 
