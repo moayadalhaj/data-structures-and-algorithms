@@ -1,4 +1,10 @@
 def insertionSort(list):
+    """
+    A function that takes a list as an argument then return the sorted list
+
+    input: list
+    output: sorted list
+    """
     for i in range(1,len(list)):
         j = i-1
         temp = list[i]
