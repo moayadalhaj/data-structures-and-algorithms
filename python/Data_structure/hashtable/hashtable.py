@@ -88,8 +88,19 @@ class HashTable:
         Returns: Boolean, indicating if the key exists in the table already.
         """
         index = self.__hash(key)
+        # check if there is a non empty bucket at the index
         if self.__buckets[index]:
-            return True
+            # iterate over linked list
+            linked_list = self.__buckets[index]
+            current = linked_list.head
+            while current:
+            # check if the key in each node matches
+                if current.value[0] == key:
+                    # return the value of the node with the mathcing key
+                    return True
+                current = current.next
+
+        # return None
         return False
 
 
