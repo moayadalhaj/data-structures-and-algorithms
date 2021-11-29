@@ -1,0 +1,100 @@
+from challenges.graph_business_trip.graph_business_trip import *
+import pytest
+
+
+def test_graph_business_trip():
+    graph = Graph()
+    pandora= graph.add_node('Pandora')
+    arendelle= graph.add_node('Arendelle')
+    metroville= graph.add_node('Metroville')
+    narnia = graph.add_node('Narnia')
+    naboo= graph.add_node('Naboo')
+    manstropolis= graph.add_node('Manstropolis')
+
+    graph.add_edge(pandora,arendelle,150)
+    graph.add_edge(pandora,metroville,82)
+    graph.add_edge(arendelle,pandora,150)
+    graph.add_edge(arendelle,metroville,99)
+    graph.add_edge(arendelle,manstropolis,42)
+    graph.add_edge(metroville,pandora,82)
+    graph.add_edge(metroville,arendelle,99)
+    graph.add_edge(metroville,manstropolis,105)
+    graph.add_edge(metroville,naboo,26)
+    graph.add_edge(metroville,narnia,37)
+    graph.add_edge(narnia,metroville,37)
+    graph.add_edge(narnia,naboo,250)
+    graph.add_edge(naboo,narnia,250)
+    graph.add_edge(naboo,metroville,26)
+    graph.add_edge(naboo,manstropolis,73)
+    graph.add_edge(manstropolis,naboo,73)
+    graph.add_edge(manstropolis,arendelle,42)
+    graph.add_edge(manstropolis,metroville,105)
+
+    expected = (True, '$150')
+    actual = business_trip(graph,[pandora,arendelle])
+    assert actual == expected
+
+def test_graph_business_trip2():
+    graph = Graph()
+    pandora= graph.add_node('Pandora')
+    arendelle= graph.add_node('Arendelle')
+    metroville= graph.add_node('Metroville')
+    narnia = graph.add_node('Narnia')
+    naboo= graph.add_node('Naboo')
+    manstropolis= graph.add_node('Manstropolis')
+
+    graph.add_edge(pandora,arendelle,150)
+    graph.add_edge(pandora,metroville,82)
+    graph.add_edge(arendelle,pandora,150)
+    graph.add_edge(arendelle,metroville,99)
+    graph.add_edge(arendelle,manstropolis,42)
+    graph.add_edge(metroville,pandora,82)
+    graph.add_edge(metroville,arendelle,99)
+    graph.add_edge(metroville,manstropolis,105)
+    graph.add_edge(metroville,naboo,26)
+    graph.add_edge(metroville,narnia,37)
+    graph.add_edge(narnia,metroville,37)
+    graph.add_edge(narnia,naboo,250)
+    graph.add_edge(naboo,narnia,250)
+    graph.add_edge(naboo,metroville,26)
+    graph.add_edge(naboo,manstropolis,73)
+    graph.add_edge(manstropolis,naboo,73)
+    graph.add_edge(manstropolis,arendelle,42)
+    graph.add_edge(manstropolis,metroville,105)
+
+    actual = business_trip(graph,[arendelle,manstropolis, naboo])
+    expected = (True, '$115')
+    assert actual == expected
+
+def test_no_direct_flights():
+    graph = Graph()
+    pandora= graph.add_node('Pandora')
+    arendelle= graph.add_node('Arendelle')
+    metroville= graph.add_node('Metroville')
+    narnia= graph.add_node('Narnia')
+    naboo= graph.add_node('Naboo')
+    manstropolis= graph.add_node('Manstropolis')
+
+    graph.add_edge(pandora,arendelle,150)
+    graph.add_edge(pandora,metroville,82)
+    graph.add_edge(arendelle,pandora,150)
+    graph.add_edge(arendelle,metroville,99)
+    graph.add_edge(arendelle,manstropolis,42)
+    graph.add_edge(metroville,pandora,82)
+    graph.add_edge(metroville,arendelle,99)
+    graph.add_edge(metroville,manstropolis,105)
+    graph.add_edge(metroville,naboo,26)
+    graph.add_edge(metroville,narnia,37)
+    graph.add_edge(narnia,metroville,37)
+    graph.add_edge(narnia,naboo,250)
+    graph.add_edge(naboo,narnia,250)
+    graph.add_edge(naboo,metroville,26)
+    graph.add_edge(naboo,manstropolis,73)
+    graph.add_edge(manstropolis,naboo,73)
+    graph.add_edge(manstropolis,arendelle,42)
+    graph.add_edge(manstropolis,metroville,105)
+
+    actual = business_trip(graph,[narnia, arendelle, naboo])
+    expected = (False, '$0')
+    assert actual == expected
+
